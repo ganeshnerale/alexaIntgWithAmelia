@@ -1,7 +1,7 @@
 import requests
 import time
 
-endPoint="http://xyz.cloudpythonanywhere.com/"
+endPoint="http://xyz.pythonanywhere.com/"
 checkStatus="checkStatus"
 getQuery="getQuery"
 postAnswer="postAnswer?answer="
@@ -15,12 +15,16 @@ while (1):
        query=requests.get(endPoint+getQuery).text.lower()
        print ("Question: "+query)
        if query in answers:
-          print ("Answer: "+requests.get(endPoint+postAnswer+answers[query]).text)
+          requests.get(endPoint+postAnswer+answers[query]).text
+          time.sleep(1)
+          print ("Answer: "+requests.get(endPoint+"getAnswer").text)
           time.sleep(1)
        else:
-          print ("Answer: "+requests.get(endPoint+postAnswer+"Sorry I dont know 2").text)
+          requests.get(endPoint+postAnswer+"Sorry I dont know 2").text
           time.sleep(1)
-     else:
+          print ("Answer: "+requests.get(endPoint+"getAnswer").text)
+          time.sleep(1)
+    else:
        time.sleep(1)
        
        
